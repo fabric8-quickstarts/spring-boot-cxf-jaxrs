@@ -41,6 +41,10 @@ Then the following command will package your app and run it on Kubernetes:
 ```
 mvn fabric8:run
 ```
+The output log will give the URL to access the endpoint, some thing like
+```
+[INFO] F8:[SVC] spring-boot-cxf-jaxrs: http://192.168.64.7:32225
+```
 
 To list all the running pods:
 
@@ -52,12 +56,12 @@ Then find the name of the pod that runs this quickstart, and output the logs fro
 
 You can also use the [fabric8 developer console](http://fabric8.io/guide/console.html) to manage the running pods, and view logs and much more.
 
-To access the endpoint:
-http://${docker_node_ip}:32225/services/helloservice/sayHello/FIS
+To access the endpoint, use the host and port from the output log when run mvn fabric8:run
+http://192.168.64.7:32225/services/helloservice/sayHello/FIS
 will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 
-http://${docker_node_ip}:32225/services/helloservice/swagger.json will return a Swagger JSON
+http://192.168.64.7:32225/services/helloservice/swagger.json will return a Swagger JSON
 description of services.
 
 
