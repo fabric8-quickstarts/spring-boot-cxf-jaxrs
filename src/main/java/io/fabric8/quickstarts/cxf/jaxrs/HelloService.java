@@ -28,8 +28,13 @@ import org.springframework.stereotype.Service;
 public interface HelloService {
  
     @GET
+    @Path("")
+    @Produces(MediaType.TEXT_PLAIN)
+    String welcome();
+    
+    @GET
     @Path("/{a}")
     @Produces(MediaType.TEXT_PLAIN)
     String sayHello(@PathParam("a") String a);
-    
+
 }

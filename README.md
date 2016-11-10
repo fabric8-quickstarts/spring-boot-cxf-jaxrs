@@ -46,6 +46,10 @@ The output log will give the URL to access the endpoint, something like
 [INFO] F8:[SVC] spring-boot-cxf-jaxrs: http://192.168.64.7:32225
 ```
 
+You will need to append the context-path to access the JAX-RS service so the url is something like
+
+http://192.168.64.7:32225/services/helloservice/sayHello/
+
 To list all the running pods:
 
     oc get pods
