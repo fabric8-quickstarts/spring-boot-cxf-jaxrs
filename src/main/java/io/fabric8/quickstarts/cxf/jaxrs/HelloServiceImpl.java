@@ -15,26 +15,17 @@
  */
 package io.fabric8.quickstarts.cxf.jaxrs;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import io.swagger.annotations.Api;
 
-import org.springframework.stereotype.Service;
- 
-@Path("/sayHello")
-@Service
-public interface HelloService {
- 
-    @GET
-    @Path("")
-    @Produces(MediaType.TEXT_PLAIN)
-    String welcome();
+@Api("/sayHello")
+public class HelloServiceImpl implements HelloService {
+
+    public String welcome() {
+        return "Welcome to the CXF RS Spring Boot application, append /{name} to call the hello service";
+    }
+
+    public String sayHello(String a) {
+        return "Hello " + a + ", Welcome to CXF RS Spring Boot World!!!";
+    }
     
-    @GET
-    @Path("/{a}")
-    @Produces(MediaType.TEXT_PLAIN)
-    String sayHello(@PathParam("a") String a);
-
 }
