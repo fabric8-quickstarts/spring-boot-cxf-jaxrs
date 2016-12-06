@@ -21,7 +21,7 @@
     <fabric8.maven.plugin.version>3.2.8</fabric8.maven.plugin.version>
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-    <cxf.version>3.1.7</cxf.version>
+    <cxf.version>3.1.8</cxf.version>
   </properties>
 
   <dependencyManagement>
