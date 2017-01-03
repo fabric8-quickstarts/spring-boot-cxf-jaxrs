@@ -1,7 +1,6 @@
 # Spring-Boot CXF JAXRS QuickStart
 
-This example demonstrates how you can use Apache CXF with Spring Boot
-based on a [fabric8 Java base image](https://github.com/fabric8io/base-images#java-base-images).
+This example demonstrates how you can use Apache CXF with Spring Boot.
 
 The quickstart uses Spring Boot to configure a little application that includes a CXF JAXRS endpoint with Swagger enabled.
 
@@ -20,23 +19,17 @@ The example can be run locally using the following Maven goal:
     mvn spring-boot:run
 
 
-### Running the example in Kubernetes
+### Running the example in OpenShift
 
-It is assumed a running Kubernetes platform is already running. If not you can find details how to [get started](http://fabric8.io/guide/getStarted/index.html).
+It is assumed a running OpenShift platform is already running. 
 
-Assuming your current shell is connected to Kubernetes or OpenShift so that you can type a command like
-
-```
-kubectl get pods
-```
-
-or for OpenShift
+Assuming your current shell is connected to OpenShift so that you can type a command like
 
 ```
 oc get pods
 ```
 
-Then the following command will package your app and run it on Kubernetes:
+Then the following command will package your app and run it on OpenShift:
 
 ```
 mvn fabric8:run
@@ -58,7 +51,22 @@ Then find the name of the pod that runs this quickstart, and output the logs fro
 
     oc logs <name of pod>
 
-You can also use the [fabric8 developer console](http://fabric8.io/guide/console.html) to manage the running pods, and view logs and much more.
+
+### Running via an S2I Application Template
+
+Applicaiton templates allow you deploy applications to OpenShift by filling out a form in the OpenShift console that allows you to adjust deployment parameters.  This template uses an S2I source build so that it handle building and deploying the application for you.
+
+First, import the Fuse image streams:
+
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/fis-2.0.x.redhat/fis-image-streams.json
+
+Then create the quickstart template:
+
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/fis-2.0.x.redhat/quickstarts/spring-boot-cxf-jaxrs-template.json
+
+Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
+
+### Accessing the Endpoints    
 
 To access the endpoint, use the host and port from the output log when run mvn fabric8:run
 
@@ -68,9 +76,3 @@ will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 http://192.168.64.7:32225/services/helloservice/swagger.json will return a Swagger JSON
 description of services.
-
-
-### More details
-
-You can find more details about running this [quickstart](http://fabric8.io/guide/quickstarts/running.html) on the website. This also includes instructions how to change the Docker image user and registry.
-
