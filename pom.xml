@@ -21,7 +21,6 @@
     <fabric8.maven.plugin.version>3.2.13</fabric8.maven.plugin.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-    <cxf.version>3.1.9</cxf.version>
   </properties>
 
   <dependencyManagement>
@@ -29,7 +28,7 @@
       <!-- import fabric8 platform bom first -->
       <dependency>
         <groupId>io.fabric8</groupId>
-        <artifactId>fabric8-project-bom-with-platform-deps</artifactId>
+        <artifactId>fabric8-project-bom-cxf-spring-boot</artifactId>
         <version>${fabric8.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -41,13 +40,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-parent</artifactId>
-        <version>${cxf.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -56,7 +48,6 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
-      <version>${cxf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -70,7 +61,6 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
-      <version>${cxf.version}</version>
     </dependency>
     <dependency>
        <groupId>io.swagger</groupId>
