@@ -64,7 +64,7 @@ You can then use the host report to access the service.
 will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 
-`http://example1-myproject.example.com/services/helloservice/swagger.json` will return a Swagger JSON
+`https://example1-myproject.example.com/services/helloservice/swagger.json` will return a Swagger JSON
 description of services.
 
 
