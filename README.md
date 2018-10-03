@@ -1,10 +1,8 @@
 # Spring-Boot CXF JAXRS QuickStart
 
-This example demonstrates how you can use Apache CXF with Spring Boot
-based on a [fabric8 Java base image](https://github.com/fabric8io/base-images#java-base-images).
+This example demonstrates how you can use Apache CXF with Spring Boot.
 
 The quickstart uses Spring Boot to configure a little application that includes a CXF JAXRS endpoint with Swagger enabled.
-
 
 ### Building
 
@@ -12,43 +10,15 @@ The example can be built with
 
     mvn clean install
 
+### Running the example in OpenShift
 
-### Running the example locally
+It is assumed that:
+- OpenShift platform is already running, if not you can find details how to [Install OpenShift at your site](https://docs.openshift.com/container-platform/3.3/install_config/index.html).
+- Your system is configured for Fabric8 Maven Workflow, if not you can find a [Get Started Guide](https://access.redhat.com/documentation/en/red-hat-jboss-middleware-for-openshift/3/single/red-hat-jboss-fuse-integration-services-20-for-openshift/)
 
-The example can be run locally using the following Maven goal:
+Then the following command will package your app and run it on OpenShift:
 
-    mvn spring-boot:run
-
-
-### Running the example in Kubernetes
-
-It is assumed a running Kubernetes platform is already running. If not you can find details how to [get started](http://fabric8.io/guide/getStarted/index.html).
-
-Assuming your current shell is connected to Kubernetes or OpenShift so that you can type a command like
-
-```
-kubectl get pods
-```
-
-or for OpenShift
-
-```
-oc get pods
-```
-
-Then the following command will package your app and run it on Kubernetes:
-
-```
-mvn fabric8:run
-```
-The output log will give the URL to access the endpoint, something like
-```
-[INFO] F8:[SVC] spring-boot-cxf-jaxrs: http://192.168.64.7:32225
-```
-
-You will need to append the context-path to access the JAX-RS service so the url is something like
-
-http://192.168.64.7:32225/services/helloservice/sayHello/
+    mvn fabric8:deploy
 
 To list all the running pods:
 
@@ -58,28 +28,51 @@ Then find the name of the pod that runs this quickstart, and output the logs fro
 
     oc logs <name of pod>
 
-You can also use the [fabric8 developer console](http://fabric8.io/guide/console.html) to manage the running pods, and view logs and much more.
+You can also use the OpenShift [web console](https://docs.openshift.com/container-platform/3.3/getting_started/developers_console.html#developers-console-video) to manage the running pods, and view logs and much more.
 
-To access the endpoint, use the host and port from the output log when run mvn fabric8:run
+### Running via an S2I Application Template
 
-http://192.168.64.7:32225/services/helloservice/sayHello/FIS
+Application templates allow you deploy applications to OpenShift by filling out a form in the OpenShift console that allows you to adjust deployment parameters.  This template uses an S2I source build so that it handle building and deploying the application for you.
+
+First, import the Fuse image streams:
+
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/GA/fis-image-streams.json
+
+Then create the quickstart template:
+
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/GA/quickstarts/spring-boot-cxf-jaxrs-template.json
+
+Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
+
+
+### Accessing the Endpoints    
+
+To access the endpoint you first need to create an OpenShift route for the service so that it can be exposed externally.  You can use the 'oc create route' command to create the route and the 'oc get routes' to get the host name for
+the route that you created.  Example:
+
+
+    $ oc create route edge example1 --service=spring-boot-cxf-jaxrs
+    route "example1" created
+    
+    $ oc get routes example1
+    NAME       HOST/PORT                                PATH      SERVICES                PORT      TERMINATION
+    example1   example1-myproject.example.com                     spring-boot-cxf-jaxrs   http      edge
+
+You can then use the host report to access the service. 
+
+`https://example1-myproject.example.com/services/helloservice/sayHello/FIS`
 will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 
-http://192.168.64.7:32225/services/helloservice/swagger.json will return a Swagger JSON
+`http://example1-myproject.example.com/services/helloservice/swagger.json` will return a Swagger JSON
 description of services.
 
 
-#### Integration Testing
+### Integration Testing
 
-The example includes a [fabric8 arquillian](https://github.com/fabric8io/fabric8/tree/master/components/fabric8-arquillian) Kubernetes Integration Test. 
-Once the container image has been built and deployed in Kubernetes, the integration test can be run with:
+The example includes a [fabric8 arquillian](https://github.com/fabric8io/fabric8/tree/v2.2.170.redhat/components/fabric8-arquillian) OpenShift Integration Test. 
+Once the container image has been built and deployed in OpenShift, the integration test can be run with:
 
-	mvn test -Dtest=*KT
+    mvn test -Dtest=*KT
 
-The test is disabled by default and has to be enabled using `-Dtest`. [Integration Testing](https://fabric8.io/guide/testing.html) and [Fabric8 Arquillian Extension](https://fabric8.io/guide/arquillian.html) provide more information on writing full fledged black box integration tests for Kubernetes. 
-
-### More details
-
-You can find more details about running this [quickstart](http://fabric8.io/guide/quickstarts/running.html) on the website. This also includes instructions how to change the Docker image user and registry.
-
+The test is disabled by default and has to be enabled using `-Dtest`. Open Source Community documentation at [Integration Testing](https://fabric8.io/guide/testing.html) and [Fabric8 Arquillian Extension](https://fabric8.io/guide/arquillian.html) provide more information on writing full fledged black box integration tests for OpenShift. 
