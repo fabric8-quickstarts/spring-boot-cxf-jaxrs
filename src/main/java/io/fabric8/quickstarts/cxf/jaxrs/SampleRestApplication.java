@@ -20,7 +20,8 @@ import java.util.Arrays;
 import org.apache.cxf.Bus;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
-import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
+import org.apache.cxf.jaxrs.openapi.OpenApiCustomizer;
+import org.apache.cxf.jaxrs.openapi.OpenApiFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -43,7 +44,22 @@ public class SampleRestApplication {
         endpoint.setBus(bus);
         endpoint.setServiceBeans(Arrays.<Object>asList(new HelloServiceImpl()));
         endpoint.setAddress("/");
-        endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
+        endpoint.setFeatures(Arrays.asList(createOpenApiFeature()));
         return endpoint.create();
     }
+
+    public OpenApiFeature createOpenApiFeature() {
+        OpenApiFeature openApiFeature = new OpenApiFeature();
+        openApiFeature.setPrettyPrint(true);
+        OpenApiCustomizer customizer = new OpenApiCustomizer();
+        customizer.setDynamicBasePath(true);
+        openApiFeature.setCustomizer(customizer);
+        openApiFeature.setTitle("Spring Boot CXF REST Application");
+        openApiFeature.setContactName("Red Hat FUSE");
+        openApiFeature.setDescription("This sample project demonstrates how to use CXF JAX-RS services"
+                + " with Spring Boot.");
+        openApiFeature.setVersion("1.0.0");
+        return openApiFeature;
+    }
+
 }

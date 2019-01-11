@@ -66,8 +66,11 @@ http://192.168.64.7:32225/services/helloservice/sayHello/FIS
 will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 
-http://192.168.64.7:32225/services/helloservice/swagger.json will return a Swagger JSON
+`http://192.168.64.7:32225/services/helloservice/openapi.json` will return a Swagger JSON
 description of services.
+
+and
+`http://192.168.64.7:32225/services/helloservice/api-docs?url=/services/helloservice/openapi.json#/default/welcome_1` will return a swagger-ui so that you can view well-rendered swagger there
 
 
 #### Integration Testing

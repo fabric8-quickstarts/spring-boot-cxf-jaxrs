@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <version.fabric8>3.0.11.redhat-SNAPSHOT</version.fabric8>
 
     <!-- configure the Fuse version you want to use here -->
     <fuse.version>7.0.1.fuse-000008-redhat-4</fuse.version>
@@ -56,17 +57,12 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>swagger-ui</artifactId>
-      <version>2.1.0</version>
+      <version>3.17.6</version>
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>com.google.guava</groupId>
-          <artifactId>guava</artifactId>
-        </exclusion>
-      </exclusions>
+      <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+      <!--version>3.2.7.fuse-730007</version-->
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
