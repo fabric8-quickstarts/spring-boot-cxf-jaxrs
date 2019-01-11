@@ -15,9 +15,6 @@
  */
 package io.fabric8.quickstarts.cxf.jaxrs;
 
-import io.swagger.annotations.Api;
-
-@Api("/sayHello")
 public class HelloServiceImpl implements HelloService {
 
     public String welcome() {
