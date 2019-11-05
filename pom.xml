@@ -35,7 +35,7 @@
         <version.fabric8>3.0.11.fuse-sb2-750011</version.fabric8>
 
         <!-- configure the versions you want to use here -->
-        <fuse.bom.version>7.5.0.fuse-sb2-750029-redhat-00001</fuse.bom.version>
+        <fuse.bom.version>7.5.0.fuse-sb2-750029-redhat-00002</fuse.bom.version>
 
         <!-- maven plugin versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
