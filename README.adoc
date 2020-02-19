@@ -123,7 +123,7 @@ will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
 
 == Swagger API
 
-The example provides API documentation of the service using Swagger. You can access the API documentation from your Web browser at <http://spring-boot-cxf-jaxrs-MY_PROJECT_NAME.OPENSHIFT_IP_ADDR.nip.io/services/helloservice/swagger.json>.
+The example provides API documentation of the service using Swagger. You can access the API documentation from your Web browser at <http://spring-boot-cxf-jaxrs-MY_PROJECT_NAME.OPENSHIFT_IP_ADDR.nip.io/services/helloservice/openapi.json>.
 
 == Integration Testing
 
