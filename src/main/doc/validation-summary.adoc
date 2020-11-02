@@ -1,0 +1,26 @@
+== Accessing the CXF JAXRS endpoint
+
+When the example is running, a CXF JAXRS endpoint is available.
+
+If you run the example on a single-node OpenShift cluster, then the REST service is exposed at 'http://spring-boot-cxf-jaxrs-MY_PROJECT_NAME.OPENSHIFT_IP_ADDR.nip.io/services/helloservice/`.
+
+Notice: As it depends on your OpenShift setup, the hostname (route) might vary. Verify with `oc get routes` which hostname is valid for you.
+
+- <http://spring-boot-cxf-jaxrs-MY_PROJECT_NAME.OPENSHIFT_IP_ADDR.nip.io/services/helloservice/sayHello/FIS>
+will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"
+
+== Swagger API
+
+The example provides API documentation of the service using Swagger. You can access the API documentation from your Web browser at <http://spring-boot-cxf-jaxrs-MY_PROJECT_NAME.OPENSHIFT_IP_ADDR.nip.io/services/helloservice/openapi.json>.
+
+== Integration Testing
+
+The example includes a https://github.com/fabric8io/fabric8/tree/master/components/fabric8-arquillian[fabric8 arquillian] Kubernetes Integration Test.
+Once the container image has been built and deployed in Kubernetes, the integration test can be run with:
+
+[source,bash,options="nowrap",subs="attributes+"]
+----
+mvn test -Dtest=*KT
+----
+
+The test is disabled by default and has to be enabled using `-Dtest`. https://fabric8.io/guide/testing.html[Integration Testing] and https://fabric8.io/guide/arquillian.html[Fabric8 Arquillian Extension] provide more information on writing full fledged black box integration tests for Kubernetes.

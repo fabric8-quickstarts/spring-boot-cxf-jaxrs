@@ -1,0 +1,5 @@
+
+You can then access the CXF JAXRS endpoint directly from your Web browser, e.g.:
+
+- <http://localhost:8080/services/helloservice/sayHello/FIS>
+will display "Hello FIS, Welcome to CXF RS Spring Boot World!!!"

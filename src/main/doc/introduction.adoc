@@ -1,0 +1,6 @@
+= Spring-Boot Camel CXF JAXRS QuickStart
+
+This example demonstrates how you can use Apache CXF with Spring Boot
+based on a https://github.com/fabric8io/base-images#java-base-images[fabric8 Java base image].
+
+The quickstart uses Spring Boot to configure a little application that includes a CXF JAXRS endpoint with Swagger enabled.
