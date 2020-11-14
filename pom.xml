@@ -23,7 +23,7 @@
 
     <groupId>io.fabric8.quickstarts.cxf.jaxrs</groupId>
     <artifactId>spring-boot-cxf-jaxrs</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>7.8.0.fuse-sb2-780025</version>
 
     <name>Fabric8 :: Quickstarts :: Spring-Boot :: CXF JAXRS</name>
     <description>Spring Boot example running a CXF JAXRS endpoint</description>
@@ -33,7 +33,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- configure the versions you want to use here -->
-        <fuse.bom.version>7.8.0.fuse-sb2-780010</fuse.bom.version>
+        <fuse.bom.version>7.8.0.fuse-sb2-780034</fuse.bom.version>
 
         <!-- maven plugin versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
