@@ -95,16 +95,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.arquillian.cube</groupId>
-            <artifactId>arquillian-cube-openshift</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>io.fabric8</groupId>
@@ -115,6 +105,13 @@
         <dependency>
             <groupId>io.fabric8</groupId>
             <artifactId>kubernetes-client</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>openshift-client</artifactId>
+            <version>4.6.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
