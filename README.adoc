@@ -5,7 +5,7 @@ based on a https://github.com/fabric8io/base-images#java-base-images[fabric8 Jav
 
 The quickstart uses Spring Boot to configure a little application that includes a CXF JAXRS endpoint with Swagger enabled.
 
-IMPORTANT: This quickstart can run in 2 modes: standalone on your machine and on Kubernetes / OpenShift Cluster
+IMPORTANT: This quickstart can run in 2 modes: standalone on your machine and on Kubernetes / OpenShift Cluster. Quickstart requires Java 8 or Java 11 (`fuse-java-openshift-jdk11-rhel8` image is used to build in Java 11).
 
 == Deployment options
 
